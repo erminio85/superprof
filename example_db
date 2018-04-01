@@ -8,6 +8,6 @@ CREATE TABLE `USER` (
   `surname` VARCHAR(45) NULL,
   `birth` DATE NULL,
   `gender` ENUM('M','F') NULL,
+  `email` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
