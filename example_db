@@ -1,0 +1,13 @@
+CREATE DATABASE SuperProfDB;
+
+USE SuperProfDB;
+
+CREATE TABLE `USER` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `surname` VARCHAR(45) NULL,
+  `birth` DATE NULL,
+  `gender` ENUM('M','F') NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
