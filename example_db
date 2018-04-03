@@ -11,3 +11,10 @@ CREATE TABLE `USER` (
   `email` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+CREATE TABLE  `PROF ` (
+  `user_id` INT,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+  FOREIGN KEY (`user_id`) REFERENCES `USER`(`id`))
+ENGINE = InnoDB;  
