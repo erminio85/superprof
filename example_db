@@ -2,32 +2,53 @@ CREATE DATABASE SuperProfDB;
 
 USE SuperProfDB;
 
-CREATE TABLE `USERS` (
-  `id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-  `name` VARCHAR(20) NOT NULL,
-  `surname` VARCHAR(20) NOT NULL,
-  `birth` DATE NOT NULL,
-  `gender` ENUM('M','F') NULL,
-  `email` VARCHAR(40) NOT NULL,
-  `password` VARCHAR(20) NOT NULL,
-  `Description` CLOB NULL,
-  PRIMARY KEY (`id`))
+CREATE TABLE 'USERS' (
+  'user_id'       INT NOT NULL AUTO_INCREMENT UNIQUE,
+  'name'          VARCHAR(20) NOT NULL,
+  'surname'       VARCHAR(20) NOT NULL,
+  'birth'         DATE NOT NULL,
+  'gender'        ENUM('M','F') NULL,
+  'email'         VARCHAR(40) NOT NULL,
+  'password'      VARCHAR(20) NOT NULL,
+  'type'          INT NOT NULL,          #questo mi serve per differenziare gli studenti dai professsori dagli amministratori
+  'photo'         BLOB NULL,
+  'Description'   CLOB NULL,
+  PRIMARY KEY ('user_id'))
 ENGINE = InnoDB;
 
-CREATE TABLE  `PROF ` (
-  `user_id` INT,
-  `materia` VARCHAR(20) NULL,   # può insegnare più di una materia? 
-  PRIMARY KEY (`id`)
-  FOREIGN KEY (`user_id`) REFERENCES `USER`(`id`))
+CREATE TABLE  'PROF' (
+  'user_id'       INT NOT NULL,
+  'subjects'      VARCHAR(20) NULL,
+  PRIMARY KEY ('user_id')
+  FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
 ENGINE = InnoDB;  
 
-CREATE TABLE  `STUDENTS ` (
-  `user_id` INT,
-  PRIMARY KEY (`id`)
-  FOREIGN KEY (`user_id`) REFERENCES `USER`(`id`))
+CREATE TABLE  'STUDENTS' (
+  'user_id'       INT NOT NULL,
+  'subjects'      VARCHAR(20) NULL,
+  'school'        VARCHAR(20) NULL,
+  PRIMARY KEY ('user_id')
+  FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
+ENGINE = InnoDB;  
+
+CREATE TABLE  'QUESTIONS' (
+ 'user_id'        INT NOT NULL,
+ 'question_id'    INT NOT NULL AUTO_INCREMENT UNIQUE,
+ 'title'          VARCHAR(20) NULL,
+ 'body'           CLOB NULL,
+ PRIMARY KEY ('question_id')
+ FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
 ENGINE = InnoDB; 
 
-CREATE TABLE  `SUBJECTS ` (
+CREATE TABLE  'ANSWERS' (
+ 'user_id'        INT NOT NULL,
+ 'answer_id'      INT NOT NULL AUTO_INCREMENT UNIQUE,
+ 'body'           CLOB NULL,
+ PRIMARY KEY ('answer_id')
+ FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
 ENGINE = InnoDB; 
 
-# Tabella Titoli di Studio? (tipo lauerea Ing...)
+CREATE TABLE  'SUBJECTS' (
+ 'subjects'       VARCHAR(20) NULL,
+ PRIMARY KEY ('subjects')
+ENGINE = InnoDB; 
