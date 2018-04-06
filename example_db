@@ -48,7 +48,15 @@ CREATE TABLE  'ANSWERS' (
  FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
 ENGINE = InnoDB; 
 
+CREATE TABLE 'STUDY'(
+  'user_id'       INT NOT NULL,
+  'subject_name'  VARCHAR(20) NULL,
+  PRIMARY KEY ('user_id','subject_name')
+  FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
+  FOREIGN KEY ('subject_name') REFERENCES 'SUBJETCS'('subject_name'))
+ ENGINE = InnoDB;
+  
 CREATE TABLE  'SUBJECTS' (
- 'subjects'       VARCHAR(20) NULL,
+ 'subjects_name'   VARCHAR(20) NULL,
  PRIMARY KEY ('subjects')
 ENGINE = InnoDB; 
