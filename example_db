@@ -17,42 +17,42 @@ CREATE TABLE 'USERS' (
 ENGINE = InnoDB;
 
 CREATE TABLE  'PROF' (
-  'user_id'       INT NOT NULL,
+  'prof_id'       INT NOT NULL,
   'subjects'      VARCHAR(20) NULL,
-  PRIMARY KEY ('user_id')
-  FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
+  PRIMARY KEY ('prof_id')
+  FOREIGN KEY ('prof_id') REFERENCES 'USERS'('user_id'))
 ENGINE = InnoDB;  
 
 CREATE TABLE  'STUDENTS' (
   'user_id'       INT NOT NULL,
   'subjects'      VARCHAR(20) NULL,
   'school'        VARCHAR(20) NULL,
-  PRIMARY KEY ('user_id')
-  FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
+  PRIMARY KEY ('student_id')
+  FOREIGN KEY ('student_id') REFERENCES 'USERS'('user_id'))
 ENGINE = InnoDB;  
 
 CREATE TABLE  'QUESTIONS' (
- 'user_id'        INT NOT NULL,
+ 'student_id'        INT NOT NULL,
  'question_id'    INT NOT NULL AUTO_INCREMENT UNIQUE,
  'title'          VARCHAR(20) NULL,
  'body'           CLOB NULL,
  PRIMARY KEY ('question_id')
- FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
+ FOREIGN KEY ('student_id') REFERENCES 'USERS'('student_id'))
 ENGINE = InnoDB; 
 
 CREATE TABLE  'ANSWERS' (
- 'user_id'        INT NOT NULL,
+ 'prof_id'        INT NOT NULL,
  'answer_id'      INT NOT NULL AUTO_INCREMENT UNIQUE,
  'body'           CLOB NULL,
  PRIMARY KEY ('answer_id')
- FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
+ FOREIGN KEY ('prof_id') REFERENCES 'USERS'('user_id'))
 ENGINE = InnoDB; 
 
 CREATE TABLE 'STUDY'(
-  'user_id'       INT NOT NULL,
+  'student_id'       INT NOT NULL,
   'subject_name'  VARCHAR(20) NULL,
   PRIMARY KEY ('user_id','subject_name')
-  FOREIGN KEY ('user_id') REFERENCES 'USERS'('user_id'))
+  FOREIGN KEY ('student_id') REFERENCES 'USERS'('student_id'))
   FOREIGN KEY ('subject_name') REFERENCES 'SUBJETCS'('subject_name'))
  ENGINE = InnoDB;
   
