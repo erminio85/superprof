@@ -24,7 +24,7 @@ CREATE TABLE  'PROF' (
 ENGINE = InnoDB;  
 
 CREATE TABLE  'STUDENTS' (
-  'user_id'       INT NOT NULL,
+  'student_id'       INT NOT NULL,
   'subjects'      VARCHAR(20) NULL,
   'school'        VARCHAR(20) NULL,
   PRIMARY KEY ('student_id')
@@ -37,7 +37,7 @@ CREATE TABLE  'QUESTIONS' (
  'title'          VARCHAR(20) NULL,
  'body'           CLOB NULL,
  PRIMARY KEY ('question_id')
- FOREIGN KEY ('student_id') REFERENCES 'USERS'('student_id'))
+ FOREIGN KEY ('student_id') REFERENCES 'USERS'('user_id'))
 ENGINE = InnoDB; 
 
 CREATE TABLE  'ANSWERS' (
@@ -52,8 +52,8 @@ CREATE TABLE 'STUDY'(
   'student_id'       INT NOT NULL,
   'subject_name'  VARCHAR(20) NULL,
   PRIMARY KEY ('user_id','subject_name')
-  FOREIGN KEY ('student_id') REFERENCES 'USERS'('student_id'))
-  FOREIGN KEY ('subject_name') REFERENCES 'SUBJETCS'('subject_name'))
+  FOREIGN KEY ('student_id') REFERENCES 'STUDENTS'('student_id'))
+  FOREIGN KEY ('subject_name') REFERENCES 'SUBJECTS'('subject_name'))
  ENGINE = InnoDB;
   
 CREATE TABLE  'SUBJECTS' (
