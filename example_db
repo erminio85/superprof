@@ -52,7 +52,7 @@ CREATE TABLE 'STUDY'(
   'student_id'       INT NOT NULL,
   'subject_name'  VARCHAR(20) NULL,
   PRIMARY KEY ('user_id','subject_name')
-  FOREIGN KEY ('student_id') REFERENCES 'STUDENTS'('student_id'))
+  FOREIGN KEY ('student_id') REFERENCES 'USERS'('student_id'))
   FOREIGN KEY ('subject_name') REFERENCES 'SUBJECTS'('subject_name'))
  ENGINE = InnoDB;
   
